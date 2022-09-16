@@ -13,7 +13,7 @@
   gap: 9px 17px;
 }
 .profile__button {
-  background-image: url(../images/editbutton.png);
+  background-image: url(../images/edit-button.svg);
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -57,7 +57,7 @@
   overflow: hidden;
 }
 .profile__plus-button {
-  background-image: url(../images/plus button.png);
+  background-image: url(../images/plus-button.svg);
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
@@ -78,6 +78,7 @@
   .profile {
     flex-direction: column;
     padding-top: 0;
+    align-items: center;
   }
 
   .profile__info {
@@ -116,8 +117,6 @@
   }
 }
 @media screen and (max-width: 585px) {
-  .profile {
-  }
   .profile__info {
     grid-template-columns: minmax(auto, 228px) auto;
     gap: 10px;
