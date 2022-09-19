@@ -1,14 +1,4 @@
 /*
-Advanced layout technique, instead of media queries
-https://web.dev/patterns/layout/repeat-auto-minmax/
-
-I will work on using this advanced technique later.
-When I start working start by uncommenting the code above.
-As per reviewer, this looks all correct, except the 
-list-style-type: none is missing. 
-*/
-
-/*
 .content {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
