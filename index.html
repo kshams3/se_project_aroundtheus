@@ -1,88 +1,142 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Landing page for a coffee shop" />
-    <meta
-      name="keywords"
-      content="HTML, CSS, grid layout, flex-box, around the us landing page"
-    />
+    <meta name="description" content="Explore US from Jacques Cousteau" />
     <meta name="author" content="Kayvon Shams" />
+    <meta name="keywords" content="explore,travel,USA," />
+    <title>Around the U.S.</title>
     <link rel="stylesheet" href="./pages/index.css" />
-    <!--link rel="icon" type="image/x-icon" href="./favicon.ico" /-->
-    <title>Around The U.S.</title>
   </head>
+
   <body class="body">
     <div class="page">
       <header class="header">
-        <img
-          src="./images/around_the_us.svg"
-          class="header__image"
-          alt="header image"
-        />
+        <a class="header__link">
+          <img
+            src="./images/Logo.svg"
+            class="header__logo"
+            alt="Around the U.S. Logo"
+          />
+        </a>
       </header>
       <main>
         <section class="profile">
-          <div class="profile__avatar-info">
-            <img
-              src="./images/jacques-cousteau.jpg"
-              class="avatar profile__avatar"
-              alt="profile image of JacquesCousteau"
-            />
-            <div class="profile__info">
-              <div class="profile__name-pen">
-                <h1 class="profile__name">Jacques Cousteau</h1>
-                <button class="profile__pen" type="button"></button>
-              </div>
-              <p class="profile__name-tag">Explorer</p>
+          <img
+            src="./images/jacques-cousteau.jpg"
+            class="profile__avatar"
+            alt="profile image of JacquesCousteau"
+          />
+
+          <div class="profile__content">
+            <div class="profile__name">
+              <h1 class="profile__name-title">Jacques Cousteau</h1>
+              <button class="profile__edit-button" type="button"></button>
             </div>
+            <p class="profile__description">Explorer</p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-        <section class="content">
-          <ul class="content__list"></ul>
+
+        <section class="locations">
+          <ul class="locations__cards">
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/yosemite-valley.jpg"
+                alt=" Yosemite Valley"
+              />
+              <div class="card__footer">
+                <h2 class="card__title">Yosemite Valley</h2>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/lake-louise.png"
+                alt="Lake Louise"
+              />
+              <div class="card__footer">
+                <h3 class="card__title">Lake Louise</h3>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/bald-mountains.png"
+                alt="Bald Mountains"
+              />
+              <div class="card__footer">
+                <h3 class="card__title">Bald Mountains</h3>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/latemar.png"
+                alt="Picture of Latemar"
+              />
+              <div class="card__footer">
+                <h3 class="card__title">Latemar</h3>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/vanoise-national-park.png"
+                alt="Vanoise National Park"
+              />
+              <div class="card__footer">
+                <h3 class="card__title">Vanoise National Park</h3>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/lago-di-braies.jpg"
+                alt="Lago di Braies"
+              />
+              <div class="card__footer">
+                <h3 class="card__title">Lago di Braies</h3>
+                <button class="card__heart-button" type="button"></button>
+              </div>
+            </li>
+          </ul>
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__text">© 2022 Around The U.S.</p>
+        <p class="footer__copyright">© 2022 Around The U.S.</p>
       </footer>
-    </div>
-    <div class="modal">
-      <div class="profile-modal">
-        <button class="profile-modal__close" type="button"></button>
-        <div class="profile-modal__content">
-          <h3 class="profile-modal__heading">Edit Profile</h3>
-          <form class="profile-modal__form">
+      <div class="popup">
+        <div class="popup__content">
+          <button class="popup__close" type="button"></button>
+          <h3 class="popup__title">Edit-profile</h3>
+          <form class="popup__form" id="edit-profile-form">
             <input
+              class="popup__input popup__input_type_name"
+              name="title"
+              placeholder="Name"
               type="text"
-              class="profile-modal__name-text"
-              value="Name"
-              required
             />
-            <span class="profile-modal__name-line"></span>
             <input
+              class="popup__input popup__input_type_description"
+              name="description"
+              placeholder="Description"
               type="text"
-              class="profile-modal__job-text"
-              value="Description"
-              required
             />
-            <span class="profile-modal__description-line"></span>
-            <button type="submit" class="profile-modal__button">Save</button>
+            <button class="popup__submit-button" type="submit">Save</button>
           </form>
         </div>
       </div>
     </div>
-    <template id="card">
-      <li class="card">
-        <img class="card__image" />
-        <div class="card__label">
-          <h2 class="card__label-text"></h2>
-          <button class="card__heart" type="button"></button>
-        </div>
-      </li>
-    </template>
-    <script src="./scripts/index.js"></script>
+    <script defer src="./scripts/index.js"></script>
   </body>
 </html>

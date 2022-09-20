@@ -11,7 +11,10 @@ const initialCards = [
     name: "Bald Mountains",
     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
   },
-  { name: "Latemar", link: "https://code.s3.yandex.net/web-code/latemar.jpg" },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
   {
     name: "Vanoise National Park",
     link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
@@ -21,100 +24,44 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+const profileEditButton = document.querySelector(".profile__edit-button");
+const profileEditPopup = document.querySelector(".popup");
+const profileEditCloseButton = document.querySelector(".popup__close");
+const profileEditForm = document.querySelector("#edit-profile-form");
 
-// Create all gloabal variables (for performance improvement)
-// These are referenced in functions
-const modal = document.querySelector(".modal");
+const profileTitleEl = document.querySelector(".profile__name-title");
+const profileDescriptionEl = document.querySelector(".profile__description");
 
-// Handle profile pen button click
+const profileTitleInput = profileEditForm.querySelector(
+  ".popup__input_type_name"
+);
+const profileDescriptionInput = profileEditForm.querySelector(
+  ".popup__input_type_description"
+);
 
-// Helper function to open profile form
-function openModal() {
-  modal.classList.add("modal_open");
+function closePopup() {
+  profileEditPopup.classList.remove("popup_is-opened");
+}
+function openPopup() {
+  profileEditPopup.classList.add("popup_is-opened");
 }
 
-// Helper function to fill the profile form once visible
-function fillProfileForm(profileModal) {
-  const profileName = document.querySelector(".profile__name");
-  const profileNameTag = document.querySelector(".profile__name-tag");
-  const profileModallNameText = profileModal.querySelector(
-    ".profile-modal__name-text"
-  );
-  const profileModalJobText = profileModal.querySelector(
-    ".profile-modal__job-text"
-  );
-  profileModallNameText.value = profileName.textContent;
-  profileModalJobText.value = profileNameTag.textContent;
-}
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitleEl.textContent;
+  profileDescriptionInput.value = profileDescriptionEl.textContent;
 
-// Helper function to close profile form
-function closeModal() {
-  modal.classList.remove("modal_open");
-}
+  openPopup();
+});
 
-const profilePen = document.querySelector(".profile__pen");
+profileEditCloseButton.addEventListener("click", closePopup);
 
-function editProfile(event) {
-  const profileModal = document.querySelector(".profile-modal");
-  fillProfileForm(profileModal);
-  openModal();
-}
-
-profilePen.addEventListener("click", editProfile);
-
-// Handle profile modal close button click
-const profileModalClose = document.querySelector(".profile-modal__close");
-
-profileModalClose.addEventListener("click", closeModal);
-
-// Handle modal Form
-const profileFormElement = document.querySelector(".profile-modal__form");
-
-function handleProfileFormSubmit(event) {
-  // Without the following line (PreventDefault()), the page will be reloaded on submission.
-  // This will prevent us from seeing the changes and persisting the changes
-  // onto the page
+profileEditForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  const titleValue = event.target.title.value;
+  const descriptionValue = event.target.description.value;
 
-  const profileModalNameText = event.target.querySelector(
-    ".profile-modal__name-text"
-  );
-  const profileModalJobText = event.target.querySelector(
-    ".profile-modal__job-text"
-  );
+  profileTitleEl.textContent = titleValue;
+  profileDescriptionEl.textContent = descriptionValue;
 
-  const profileName = document.querySelector(".profile__name");
-  const profileNameTag = document.querySelector(".profile__name-tag");
-
-  profileName.textContent = profileModalNameText.value;
-  profileNameTag.textContent = profileModalJobText.value;
-
-  closeModal();
-}
-
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
-
-// Add cards using template logic
-const cardTemplate = document.querySelector("#card").content;
-
-function getCardElement(data) {
-  // Add cards using template logic
-  //const cardTemplate = document.querySelector("#card").content;
-  // cardTemplate is already defined outside the function
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardLabel = cardElement.querySelector(".card__label-text");
-
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardLabel.textContent = data.name;
-
-  return cardElement;
-}
-
-// Read the content__list class (Un-ordered list)
-// Then add list items to this in a loop.
-// list item is nothing but a card
-contentList = document.querySelector(".content__list");
-initialCards.forEach((data) => contentList.append(getCardElement(data)));
+  closePopup();
+});
