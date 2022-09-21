@@ -65,3 +65,5 @@ profileEditForm.addEventListener("submit", (event) => {
 
   closePopup();
 });
+
+const cardListEl = document.querySelector(".card__list");
